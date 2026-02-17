@@ -3,9 +3,9 @@ const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
 apiInstance.authentications['apiKey'].apiKey = process.env.BREVO_API_KEY;
 
 let doMail = async (req, resp) => {
-    const { name, contact, address, orderDetails } = req.body;
+    const { name, contact, address, order } = req.body;
     
-    if (!name || !contact || !address || !orderDetails) {
+    if (!name || !contact || !address || !order) {
         return resp.json({status: false, message: "All fields are required" });
     }
 
@@ -26,7 +26,7 @@ let doMail = async (req, resp) => {
             <p><strong>Name:</strong> ${name}</p>
             <p><strong>Contact:</strong> ${contact}</p>
             <p><strong>Address:</strong> ${address}</p>
-            <p><strong>Order:</strong> ${orderDetails}</p>
+            <p><strong>Order:</strong> ${order}</p>
             <br/>
             <p>Please process this order.</p>
         `
