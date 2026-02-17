@@ -3,6 +3,7 @@ const apiInstance = new SibApiV3Sdk.TransactionalEmailsApi();
 apiInstance.authentications['apiKey'].apiKey = process.env.BREVO_API_KEY;
 
 let doMail = async (req, resp) => {
+    console.log("BODY RECEIVED:", req.body);
     const { name, contact, address, order } = req.body;
     
     if (!name || !contact || !address || !order) {
@@ -16,7 +17,7 @@ let doMail = async (req, resp) => {
         },
         to: [
             {
-                email: process.env.ADMIN_EMAIL,   // YOUR email
+                email: process.env.ADMIN_EMAIL,
                 name: "Admin"
             }
         ],
